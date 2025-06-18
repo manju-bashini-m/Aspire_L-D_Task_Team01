@@ -10,6 +10,8 @@ export const postExcelData=async(req,res)=>{
         const jsonData=xlsx.utils.sheet_to_json(readFile.Sheets[sheetName]);
 
         await excelModel.insertMany(jsonData);
+        const data = await excelModel.find();
+        console.log(`Excel data ${data}`);
         res.json({ success: true, message: 'Data saved to DB' });
     } catch (err) {
          res.status(500).json({ success: false, error: err.message });

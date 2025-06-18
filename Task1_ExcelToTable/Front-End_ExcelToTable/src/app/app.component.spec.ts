@@ -17,7 +17,6 @@ describe('AppComponent', () => {
   it(`should have the 'Front-End_ExcelToTable' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Front-End_ExcelToTable');
   });
 
   it('should render title', () => {

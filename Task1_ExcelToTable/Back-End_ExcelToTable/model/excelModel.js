@@ -8,6 +8,6 @@ const excelSchema = new mongoose.Schema({
     Role:String,
 
 });
-const excelModel= mongoose.model.excelData || mongoose.model("excelData",excelSchema);
+const excelModel= mongoose.models.excelData || mongoose.model("excelData",excelSchema);
 
 export default excelModel;

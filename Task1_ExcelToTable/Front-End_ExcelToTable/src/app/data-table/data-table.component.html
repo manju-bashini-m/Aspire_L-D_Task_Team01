@@ -1,0 +1,19 @@
+@if(data.length>0){
+    <table>
+        <thead>
+            @for(key of columnKeys; track key){
+                <th>{{key}}</th>
+            }
+        </thead>
+        <tbody>
+            @for(row of data; track row){
+                @for(key of columnKeys; track key){
+                    <td>{{row[key]}}</td>
+                }
+            }
+        </tbody>
+    </table>
+}
+@else{
+    <p>No data available</p>
+}
