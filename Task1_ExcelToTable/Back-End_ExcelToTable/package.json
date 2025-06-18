@@ -2,6 +2,7 @@
   "name": "back-end_exceltotable",
   "version": "1.0.0",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0",
-    "mongoose": "^8.16.0"
+    "mongoose": "^8.16.0",
+    "multer": "^2.0.1",
+    "nodemon": "^3.1.10",
+    "xlsx": "^0.18.5"
   }
 }
