@@ -19,7 +19,6 @@ export const ConnectDb=async()=> {
 }
 ConnectDb();
 
-
 app.get("/", async (req, res) => {
     try {
         res.send("Server Running");

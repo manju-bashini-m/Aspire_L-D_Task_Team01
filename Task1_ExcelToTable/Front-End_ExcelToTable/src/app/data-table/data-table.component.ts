@@ -1,27 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Signal } from '@angular/core';
 import { ImportDataService } from '../import-data.service';
 import { CommonModule } from '@angular/common';
+import { ExcelRow } from '../excel-row';
+import {FormsModule} from '@angular/forms'
 @Component({
   standalone:true,
   selector: 'app-data-table',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.css'
 })
-export class DataTableComponent {
-  data :any=[];
+export class DataTableComponent implements OnInit  {
+  data:ExcelRow[]=[];
   columnKeys: string[] = [];
   constructor(private importService:ImportDataService ){
-    this.importService.getData().subscribe({
-      next: (res)=> { 
-        this.data=res;
-        if (this.data.length > 0) {
-        this.columnKeys = Object.keys(this.data[0]); // Maintain order
-      }
-      },
-      error: (err) => {console.log(`Error in getting data ${err}`)}
-    }
-    )
   }
+  ngOnInit(): void {
+      this.GetAllData()
+  }
+  GetAllData(){
+      this.importService.getData().subscribe((res)=>{
+        this.data=res.data;
+        if (this.data.length > 0) {
+        this.columnKeys = Object.keys(this.data[0]).filter((key)=>{
+          return key !== '_id' && key !== '__v'
+        });
+      }
+      }
+    )
+    }
   
 }
