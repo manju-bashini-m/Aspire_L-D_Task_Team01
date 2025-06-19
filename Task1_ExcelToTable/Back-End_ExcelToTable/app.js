@@ -2,14 +2,18 @@ import express from 'express';
 import cors from 'cors'
 import mongoose from 'mongoose';
 import excelRouter from './routes/excelRoutes.js';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app=express();
 app.use(cors());
 app.use(express.json());
 const port=3000;
+const dbUrl=process.env.DB_URL;
 
 export const ConnectDb=async()=> {
     try {
-        await mongoose.connect("mongodb+srv://manjumarimuthu2003:unyghqFnFGWh5tIZ@cluster0.gfbbjoy.mongodb.net/ExcelData?retryWrites=true&w=majority&appName=Cluster0");
+        await mongoose.connect(dbUrl);
         //await mongoose.connect("mongodb://localhost:27017/exceldata");
         console.log("Connected to DB");
     } catch (err) {
@@ -33,8 +37,3 @@ app.use("/excel",excelRouter);
 app.listen(port,()=>{
     console.log(`Listening on the port: ${port}`)
 });
-
-
-//unyghqFnFGWh5tIZ
-
-// mongodb+srv://manjumarimuthu2003:unyghqFnFGWh5tIZ@cluster0.gfbbjoy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
