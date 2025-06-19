@@ -9,8 +9,8 @@ const port=3000;
 
 export const ConnectDb=async()=> {
     try {
-        //await mongoose.connect("mongodb+srv://manjumarimuthu2003:unyghqFnFGWh5tIZ@cluster0.gfbbjoy.mongodb.net/ExcelData?retryWrites=true&w=majority&appName=Cluster0");
-        await mongoose.connect("mongodb://localhost:27017/exceldata");
+        await mongoose.connect("mongodb+srv://manjumarimuthu2003:unyghqFnFGWh5tIZ@cluster0.gfbbjoy.mongodb.net/ExcelData?retryWrites=true&w=majority&appName=Cluster0");
+        //await mongoose.connect("mongodb://localhost:27017/exceldata");
         console.log("Connected to DB");
     } catch (err) {
         console.error("Error connecting to DB:", err);
