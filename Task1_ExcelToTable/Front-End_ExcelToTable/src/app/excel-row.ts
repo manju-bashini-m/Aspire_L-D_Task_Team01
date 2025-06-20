@@ -1,8 +1,9 @@
 export interface ExcelRow {
-    Sno:number,
-    FirstName:string,
-    LastName:string,
-    Email:string,
-    Role:string,
+    AceID: string,
+  Name: string,
+  Email: string,
+  CollegeName: string,
+  Practice: string,
+  DateOfJoining: string,
     [key: string]: string | number;
 }

@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
 const excelSchema = new mongoose.Schema({
-    Sno:Number,
-    FirstName:String,
-    LastName:String,
-    Email:String,
-    Role:String,
-
+   AceID: String,
+  Name: String,
+  Email: String,
+  CollegeName: String,
+  Practice: String,
+  DateOfJoining: String,
 });
 const excelModel= mongoose.models.excelData || mongoose.model("excelData",excelSchema);
 

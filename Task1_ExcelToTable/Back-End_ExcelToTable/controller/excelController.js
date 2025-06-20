@@ -27,3 +27,33 @@ export const getAllData=async(req,res)=>{
          res.status(500).json({ success: false, error: err.message });
     }
 }
+
+export const deleteDataByID= async(req,res) => {
+    try{
+        let id = req.params["id"];
+        let result = await excelModel.findByIdAndDelete(id);
+        if(!result){
+            return res.status(404).json({ success: false, message: "Item not found" });
+        }
+        res.status(200).json({ success: true, message: "Item deleted successfully" });
+    }
+    catch(err){
+        res.status(500).json({ success: false, error: err.message });
+    }
+}
+
+export const updateDataByID = async(req, res) => {
+    try{
+        let model=req.body;
+        console.log(model);
+        let id = req.params["id"];
+       let result = await excelModel.findOneAndUpdate({ _id: id }, model,{ new: true, runValidators: true });
+        if(!result){
+            return res.status(404).json({ success: false, message: "Item not found" });
+        }
+        res.status(200).json({ success: true, message: "Item updated successfully" });
+    }
+    catch(err){
+        res.status(500).json({success:false, error:err.message});
+    }
+}

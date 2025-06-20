@@ -1,17 +1,44 @@
+<div class="container">
+    <h1 class="heading">Impact Training</h1>
+    <p class="sub-heading">Impact Training</p>
+    <div class="toolbar">
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search by keyword">
+        </div>
+        <div class="toolbar-action">
+            <p class="emp-count">Employees : {{count}}</p>
 
-@if(data.length>0){
+            <i class="fas fa-download download-icon" ></i>
+            <i class="fas fa-trash-alt delete-icon" ></i>
+
+            
+
+            <button class="add-emp-btn">+ Add Employee</button>
+            <label for="file-upload" class="upload-label"><i class="fas fa-paperclip"></i> Upload files</label>
+            <input id="file-upload" type="file" (change)="onFileChange($event)" accept=".xlsx,.xls" hidden>
+    </div>
+    </div>
+    
+    @if(data.length>0){
     <table>
         <thead>
+            <th><input type="checkbox"></th>
             @for(key of columnKeys; track key){
                 <th>{{key}}</th>
+                
             }
+            <th>Action</th>
         </thead>
         <tbody>
+            
             @for(row of data; track row){
                 <tr>
+                    <td><input type="checkbox" ></td>
                 @for(key of columnKeys; track key){
                     <td>{{row[key]}}</td>
                 }
+                <td><button><i class="fas fa-edit"></i></button> &nbsp; <button><i class="fas fa-trash-alt"></i></button></td>
                 </tr>
             }
         </tbody>
@@ -20,3 +47,6 @@
 @else{
     <p>No data available</p>
 }
+
+</div>
+
